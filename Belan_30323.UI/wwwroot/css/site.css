@@ -1,0 +1,54 @@
+header, footer {
+    background-color: rgba(var(--bs-dark-rgb));
+}
+
+.nav-color {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.custom-line {
+    border: none;
+    border-top: 2px solid;
+    width: 100%;
+}
+
+/* Контейнер для формы + логин и пароль */
+.form-container { /* Устанавливает отвступ всех элементов между друг другом */
+    margin: 5px;
+}
+    .form-container label {
+        display: inline-block;
+        width: 80px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="password"] {
+        width: 90%;
+        padding: 5px;
+        border: 2px solid #ced4da; /* Устанавливает толщину рамки в 2px */
+        border-radius: 5px; /* Скругление углов */
+    }
+
+/* Стили для чекбоксов */
+.form-check {
+    margin-left: 15%;
+}
+
+/* Стили для радио-кнопок */
+.radio-group {
+    margin-left: 15%;
+}
+
+/* Стили для кнопки Отправить */
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
