@@ -1,137 +1,55 @@
 ﻿@{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<main class="container">
+    <h1>Лабораторная работа 1</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
-    <link rel="stylesheet" href="~/Belan_30323.UI.styles.css" asp-appendversion="true" />
-</head>
-<body>
-    <header>
-        <div class="container">
-            <!-- Панель навигации -->
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-                <!-- меню сайта -->
-                <a class="navbar-brand" href="#">Belan Valeria</a>
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">Лб 1</a>
-                    <a class="nav-item nav-link" href="#">Каталог</a>
-                    <a class="nav-item nav-link" href="#">Администрирование</a>
-                </div>
-                <!-- Информация пользователя -->
-                <a href="#" class="navbar-text ms-auto">
-                    00,0 руб <i class="fa-solid fa-cart-shopping"></i> (0)
-                </a>
-                <div class="dropdown ms-4 nav-color">
-                    <button class="btn btn-secondary dropdown-toggle"
-                            type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        User@gmail.com
-                        <img src="images/default-profile-picture.png" width="30"
-                             alt="User" class="rounded nav-color" />
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li>
-                            <span class="dropdown-item-text">
-                                <img src="images/default-profile-picture.png"
-                                     width="50" alt="User" clas="rounded" />
-                                user@gmail.com
-                            </span>
-                        </li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <form id="logoutForm" class="form-inline" action="#">
-                                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">
-                                    Logout
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <!-- Список -->
+    <h2>Список</h2>
+    <ol type="A">
+        <li>элемент 0 списка</li>
+        <li>элемент 1 списка</li>
+        <li>элемент 2 списка</li>
+        <li>элемент 3 списка</li>
+        <li>элемент 4 списка</li>
+    </ol>
+
+    <hr class="custom-line">
+
+    <!-- Форма -->
+    <h2>Форма</h2>
+    <form method="POST" action="">
+        <!-- Чекбоксы -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox1" name="checkbox1">
+            <label class="form-check-label" for="checkbox1">Чек-бокс 1</label>
         </div>
-    </header>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox2" name="checkbox2">
+            <label class="form-check-label" for="checkbox2">Чек-бокс 2</label>
+        </div>
 
-    <main class="container">
-        <h1>Лабораторная работа 1</h1>
+        <!-- Радио-кнопки -->
+        <div class="radio-group">
+            <label><input type="radio" name="radio" value="1" checked> Радио-1</label>
+            <label><input type="radio" name="radio" value="2"> Радио-2</label>
+            <label><input type="radio" name="radio" value="3"> Радио-3</label>
+        </div>
 
-        <!-- Список -->
-        <h2>Список</h2>
-        <ol type="A">
-            <li>элемент 0 списка</li>
-            <li>элемент 1 списка</li>
-            <li>элемент 2 списка</li>
-            <li>элемент 3 списка</li>
-            <li>элемент 4 списка</li>
-        </ol>
-
-        <hr class="custom-line">
-
-        <!-- Форма -->
-        <h2>Форма</h2>
-        <form method="POST" action="">
-            <!-- Чекбоксы -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkbox1" name="checkbox1">
-                <label class="form-check-label" for="checkbox1">Чек-бокс 1</label>
+        <!-- Логин и пароль -->
+        <div class="form-container">
+            <div>
+                <label for="login">Логин:</label>
+                <input type="text" id="login" name="login" placeholder="Введите имя">
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkbox2" name="checkbox2">
-                <label class="form-check-label" for="checkbox2">Чек-бокс 2</label>
-            </div>
-
-            <!-- Радио-кнопки -->
-            <div class="radio-group">
-                <label><input type="radio" name="radio" value="1" checked> Радио-1</label>
-                <label><input type="radio" name="radio" value="2"> Радио-2</label>
-                <label><input type="radio" name="radio" value="3"> Радио-3</label>
-            </div>
-
-            <!-- Логин и пароль -->
-            <div class="form-container">
-                <div>
-                    <label for="login">Логин:</label>
-                    <input type="text" id="login" name="login" placeholder="Введите имя">
-                </div>
-                <div>
-                    <label for="password">Пароль:</label>
-                    <input type="password" id="password" name="password" placeholder="Введите пароль">
-                </div>
-            </div>
-
-            <!-- Кнопка отправки -->
-            <button type="submit" class="btn">Отправить</button>
-        </form>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="navbar navbar-dark navbar-expand-md bg-dark">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-item nav-link" href="http://www.facebook.com">
-                        <i class="fa-brands fa-facebook-f fa-2x"></i>
-                    </a>
-                    <a class="nav-item nav-link" href="http://www.vk.com">
-                        <i class="fa-brands fa-vk fa-2x"></i>
-                    </a>
-                    <a class="nav-item nav-link" href="http://www.twitter.com">
-                        <i class="fa-brands fa-twitter fa-2x"></i>
-                    </a>
-                </div>
+            <div>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль">
             </div>
         </div>
-    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</body>
-</html>
+        <!-- Кнопка отправки -->
+        <button type="submit" class="btn">Отправить</button>
+    </form>
+</main>    
