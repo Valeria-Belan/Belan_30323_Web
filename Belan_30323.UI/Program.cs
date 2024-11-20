@@ -1,4 +1,5 @@
 using Belan_30323.UI.Data;
+using Belan_30323.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,12 @@ builder.Services.AddAuthorization(opt =>
 });
 
 builder.Services.AddSingleton<IEmailSender, NoOpEmailSender>();
+
+//Зарегистрируйте сервис ICategoryService как scoped сервис в классе Program
+builder.Services.AddScoped<ICategoryService, MemoryCategoryService>();
+
+//Зарегистрируйте сервис IProductService как scoped сервис в классе Program
+builder.Services.AddScoped<IProductService, MemoryProductService>();
 
 builder.Services.AddControllersWithViews();
 
