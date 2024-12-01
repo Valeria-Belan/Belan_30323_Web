@@ -10,10 +10,11 @@
     <button class="btn btn-secondary dropdown-toggle"
             type="button" id="dropdownMenuButton"
             data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <img src="@Url.Action("GetAvatar","Image")"
+                aria-expanded="false">
+           @*  <img src="@Url.Action("GetAvatar","Image")"
                  width="30" alt="User"
-                 class="rounded bg-light"/>
+                 class="rounded bg-light" /> *@
+            <img img-action="GetAvatar" img-controller="Image" />
             @User.Claims.FirstOrDefault(c => c.Type.Equals("Name", StringComparison.OrdinalIgnoreCase))?.Value
 
         <img src="images/default-profile-picture.png" width="20"

@@ -1,5 +1,6 @@
 ﻿using Belan_30323.Domain.Entities;
 using Belan_30323.Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Belan_30323.UI.Services
 {
@@ -8,11 +9,13 @@ namespace Belan_30323.UI.Services
         List<Dish> _dishes;
         List<Category> _categories;
 
-        public MemoryProductService(ICategoryService categoryService)
+        private readonly ICategoryService _categoryService;
+        private readonly IConfiguration _config;
+
+        public MemoryProductService([FromServices] IConfiguration config, ICategoryService categoryService)
         {
-            _categories = categoryService.GetCategoryListAsync()
-           .Result
-           .Data;
+            _categories = categoryService.GetCategoryListAsync().Result.Data;
+           _config = config;
             SetupData();
         }
 
@@ -63,7 +66,7 @@ namespace Belan_30323.UI.Services
         public Task<ResponseData<ProductListModel<Dish>>> GetProductListAsync(string? categoryNormalizedName, int pageNo = 1)
         {
             // Создать объект результата
-            var result = new ResponseData<ProductListModel<Dish>>();
+            ResponseData<ProductListModel<Dish>> result = new();
 
             // Id категории для фильрации
             int? categoryId = null;
@@ -78,19 +81,29 @@ namespace Belan_30323.UI.Services
             // Выбрать объекты, отфильтрованные по Id категории,
             // если этот Id имеется
             var data = _dishes.Where(d => categoryId == null || d.CategoryId.Equals(categoryId))?.ToList();
-            //var data = _dishes.Where(d => categoryNormalizedName == null || d.Category.NormalizedName.Equals(categoryNormalizedName)).ToList();
 
-            // поместить ранные в объект результата
-            result.Data = new ProductListModel<Dish>() 
-            { 
-                Items = data 
+            // получить размер страницы из конфигурации
+            int pageSize = _config.GetSection("ItemsPerPage").Get<int>();
+
+            // получить общее количество страниц
+            int totalPages = (int)Math.Ceiling(data.Count / (double)pageSize);
+
+            // получить данные страницы
+            var listData = new ProductListModel<Dish>()
+            {
+                Items = data.Skip((pageNo - 1) * pageSize).Take(pageSize).ToList(),
+                CurrentPage = pageNo,
+                TotalPages = totalPages
             };
+
+            // поместить данные в объект результата
+            result.Data = listData;
 
             // Если список пустой
             if (data.Count == 0)
             {
                 result.Success = false;
-                result.ErrorMessage = "Нет объектов в выбраннной  категории";
+                result.ErrorMessage = "Нет объектов в выбраннной категории";
             }
 
             // Вернуть результат

@@ -52,3 +52,9 @@ header, footer {
         background-color: #0056b3;
     }
 
+/*расположение пагинации страниц*/
+.centered-pagination {    
+    margin: 0px;  
+    text-align: center;
+    padding-left: 45%;
+}
