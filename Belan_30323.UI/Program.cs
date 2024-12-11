@@ -1,5 +1,6 @@
 using Belan_30323.UI.Data;
 using Belan_30323.UI.Services;
+using Belan_30323.UI.Services.ApiServices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -32,11 +33,19 @@ builder.Services.AddAuthorization(opt =>
 
 builder.Services.AddSingleton<IEmailSender, NoOpEmailSender>();
 
-//Зарегистрируйте сервис ICategoryService как scoped сервис в классе Program
-builder.Services.AddScoped<ICategoryService, MemoryCategoryService>();
+////Зарегистрируйте сервис ICategoryService как scoped сервис в классе Program
+//builder.Services.AddScoped<ICategoryService, MemoryCategoryService>();
 
-//Зарегистрируйте сервис IProductService как scoped сервис в классе Program
-builder.Services.AddScoped<IProductService, MemoryProductService>();
+////Зарегистрируйте сервис IProductService как scoped сервис в классе Program
+//builder.Services.AddScoped<IProductService, MemoryProductService>();
+
+//Зарегистрируйте сервис ApiCategoryService как scoped сервис в классе Program
+builder.Services.AddHttpClient<ICategoryService, ApiCategoryService>(opt
+=> opt.BaseAddress = new Uri("https://localhost:7005/api/categories/"));
+
+//Зарегистрируйте сервис ApiProductService как scoped сервис в классе Program
+builder.Services.AddHttpClient<IProductService, ApiProductService>(opt
+=> opt.BaseAddress = new Uri("https://localhost:7005/api/dishes/"));
 
 builder.Services.AddControllersWithViews();
 

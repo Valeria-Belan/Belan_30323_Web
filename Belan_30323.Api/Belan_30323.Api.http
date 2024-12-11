@@ -1,0 +1,6 @@
+@Belan_30323.Api_HostAddress = http://localhost:5291
+
+GET {{Belan_30323.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
