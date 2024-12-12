@@ -1,5 +1,6 @@
 ﻿using Belan_30323.Domain.Entities;
 using Belan_30323.Domain.Models;
+using Belan_30323.UI.Services.Abstraction;
 
 namespace Belan_30323.UI.Services.ApiServices
 {

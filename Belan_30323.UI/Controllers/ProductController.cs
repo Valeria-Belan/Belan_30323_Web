@@ -1,5 +1,5 @@
 ﻿using Belan_30323.Domain.Entities;
-using Belan_30323.UI.Services;
+using Belan_30323.UI.Services.Abstraction;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Belan_30323.UI.Controllers

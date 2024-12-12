@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belan_30323.UI", "Belan_303
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belan_30323.Domain", "Belan_30323.Domain\Belan_30323.Domain.csproj", "{AADE6B13-C799-4AA5-9354-87DD60C670E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belan_30323.Api", "Belan_30323.Api\Belan_30323.Api.csproj", "{99B4096E-1FB3-439B-BA68-14CB3A1774D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belan_30323.Api", "Belan_30323.Api\Belan_30323.Api.csproj", "{99B4096E-1FB3-439B-BA68-14CB3A1774D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using Belan_30323.Domain.Entities;
 using Belan_30323.Domain.Models;
 
-namespace Belan_30323.UI.Services
+namespace Belan_30323.UI.Services.Abstraction
 {
     public interface IProductService
     {
@@ -39,5 +39,6 @@ namespace Belan_30323.UI.Services
         ///// <param name="formFile">Файл изображения</param>
         ///// <returns>Созданный объект</returns>
         //public Task<ResponseData<Dish>> CreateProductAsync(Dish product, IFormFile? formFile);
+        public Task<ResponseData<Dish>> CreateProductAsync(Dish product, IFormFile? formFile);
     }
 }
