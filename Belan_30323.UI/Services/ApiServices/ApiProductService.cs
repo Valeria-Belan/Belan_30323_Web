@@ -1,7 +1,9 @@
 ﻿using Belan_30323.Domain.Entities;
 using Belan_30323.Domain.Models;
 using Belan_30323.UI.Services.Abstraction;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Belan_30323.UI.Services.ApiServices
 {
@@ -95,6 +97,38 @@ namespace Belan_30323.UI.Services.ApiServices
             }
 
             return responseData;
+        }
+
+        public async Task<ResponseData<Dish>> GetProductByIdAsync(int id)
+        {
+            var uri = httpClient.BaseAddress;
+            var queryData = new Dictionary<string, string>();
+
+
+            var result = await httpClient.GetAsync(uri + id.ToString());
+            
+            if (result.IsSuccessStatusCode)
+            {
+                return await result.Content
+               .ReadFromJsonAsync<ResponseData<Dish>>();
+            };
+            var response = new ResponseData <Dish>
+            {
+                Success = false,
+                ErrorMessage = "Ошибка чтения API"
+            };
+
+            return response;
+        }
+
+        public Task UpdateProductAsync(int id, Dish product, IFormFile? formFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteProductAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

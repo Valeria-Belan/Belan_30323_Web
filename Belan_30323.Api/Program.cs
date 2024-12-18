@@ -14,6 +14,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(conString);
 });
 
+
+
 ////Зарегистрируйте сервис ApiCategoryService как scoped сервис в классе Program
 //builder.Services.AddHttpClient<IApiCategoryService, ApiCategoryService>(opt
 //=> opt.BaseAddress = new Uri("https://localhost:7005/api/categories/"));

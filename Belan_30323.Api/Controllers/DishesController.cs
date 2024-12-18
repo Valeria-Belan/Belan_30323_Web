@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Belan_30323.Api.Data;
 using Belan_30323.Domain.Entities;
@@ -64,6 +59,36 @@ namespace Belan_30323.Api.Controllers
             dish.Image = url;
             await _context.SaveChangesAsync();
             return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ResponseData<Dish>>> GetDisheById(int id)
+        {
+            var responseData = new ResponseData<Dish>();
+
+            try
+            {
+                // Запрос к базе данных
+                var dish = await _context.Dishes
+                    .FirstOrDefaultAsync(d => d.Id == id);
+
+                if (dish != null)
+                {
+                    responseData.Data = dish;
+                }
+                else
+                {
+                    responseData.Success = false;
+                    responseData.ErrorMessage = $"Блюдо с ID {id} не найдено.";
+                }
+            }
+            catch (Exception ex)
+            {
+                responseData.Success = false;
+                responseData.ErrorMessage = $"Ошибка при доступе к данным: {ex.Message}";
+            }
+
+            return responseData;
         }
 
         // GET: api/Dishes

@@ -6,6 +6,7 @@ namespace Belan_30323.UI.Controllers
 {
     public class ProductController(ICategoryService categoryService, IProductService productService) : Controller
     {
+        [HttpGet]
         [Route("Catalog")]
         [Route("Catalog/{category}")]
         public async Task<IActionResult> Index(string? category, int pageNo = 1)

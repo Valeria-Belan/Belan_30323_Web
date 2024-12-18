@@ -4,12 +4,15 @@ using Belan_30323.UI.Services.Abstraction;
 using Belan_30323.UI.Services.ApiServices;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("SqliteConnetion") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("SqliteConnetion") 
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+builder.Host.UseSerilog();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
@@ -18,6 +21,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 
 builder.Services.AddDefaultIdentity<AppUser>(options =>
     {
@@ -54,7 +58,15 @@ builder.Services.AddHttpClient<IProductService, ApiProductService>(opt
 
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddTransient<IEmailSender, NoOpEmailSender>();
+Log.Logger = new LoggerConfiguration()
+ .WriteTo.Console()
+ .WriteTo.File("logs/log.txt", rollingInterval:
+RollingInterval.Day)
+ .CreateLogger();
+
+builder.Host.UseSerilog();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -73,6 +85,7 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -84,5 +97,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+app.UseSession();
 
 app.Run();
