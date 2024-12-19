@@ -1,0 +1,23 @@
+﻿@using Belan_30323.Domain.Entities
+@using Belan_30323.Blazor.Services
+@using Belan_30323.Domain.Models
+
+@if (Dish != null)
+{
+    <div class="card mt-5" style="width: 18rem;">
+        <img src="@Dish.Image" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@Dish.Name</h5>
+            <p class="card-text">@Dish.Description</p>
+            <h4 class="badge bg-info">@Dish.Calories калорий</h4>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Dish Dish { get; set; }
+
+    [Parameter]
+    public EventCallback<Dish> DishChanged { get; set; }
+}

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belan_30323.Domain", "Belan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belan_30323.Api", "Belan_30323.Api\Belan_30323.Api.csproj", "{99B4096E-1FB3-439B-BA68-14CB3A1774D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belan_30323.Blazor", "Belan_30323.Blazor\Belan_30323.Blazor.csproj", "{C5A1DD5F-9218-4EE0-A6D8-DCC241299CAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{99B4096E-1FB3-439B-BA68-14CB3A1774D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99B4096E-1FB3-439B-BA68-14CB3A1774D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99B4096E-1FB3-439B-BA68-14CB3A1774D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A1DD5F-9218-4EE0-A6D8-DCC241299CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A1DD5F-9218-4EE0-A6D8-DCC241299CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A1DD5F-9218-4EE0-A6D8-DCC241299CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A1DD5F-9218-4EE0-A6D8-DCC241299CAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
